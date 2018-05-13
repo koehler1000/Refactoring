@@ -24,9 +24,10 @@ public class Customer {
 
         while (enum_rentals.hasMoreElements()) {
             Rental rental = enum_rentals.nextElement();
+            
             frequentRenterPoints = rental.calculateFrequentRenterPoints(frequentRenterPoints);
-            //show figures for this rental
             result = rental.appendResult(result);
+            
             totalAmount += rental.getCharge();
         }
         //add footer lines
