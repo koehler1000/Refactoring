@@ -26,7 +26,7 @@ public class Customer {
             Rental rental = enum_rentals.nextElement();
             frequentRenterPoints = rental.calculateFrequentRenterPoints(frequentRenterPoints);
             //show figures for this rental
-            result += "\t" + rental.getMovie().getTitle()+ "\t" + "\t" + rental.getDaysRented() + "\t" + rental.getCharge() + "\n";
+            result = rental.appendResult(result);
             totalAmount += rental.getCharge();
         }
         //add footer lines

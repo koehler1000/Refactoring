@@ -39,4 +39,8 @@ public class Rental {
 		    frequentRenterPoints ++;
 		return frequentRenterPoints;
 	}
+	public String appendResult(String result) {
+		result += "\t" + getMovie().getTitle()+ "\t" + "\t" + getDaysRented() + "\t" + getCharge() + "\n";
+		return result;
+	}
 }
