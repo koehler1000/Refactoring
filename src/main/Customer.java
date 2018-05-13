@@ -24,7 +24,7 @@ public class Customer {
 
         while (enum_rentals.hasMoreElements()) {
             double thisAmount = 0;
-            Rental rental = (Rental) enum_rentals.nextElement();
+            Rental rental = enum_rentals.nextElement();
             //determine amounts for each line
             thisAmount = rental.amountFor();
             // add frequent renter points
