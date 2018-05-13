@@ -23,24 +23,24 @@ public class Customer {
         result += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
         while (enum_rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental rental = enum_rentals.nextElement();
-            //determine amounts for each line
-            thisAmount = rental.amountFor();
-            // add frequent renter points
-            frequentRenterPoints ++;
-            // add bonus for a two day new release rental
-            if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1) 
-                frequentRenterPoints ++;
+            frequentRenterPoints = calculateFrequentRenterPoints(frequentRenterPoints, rental);
             //show figures for this rental
-            result += "\t" + rental.getMovie().getTitle()+ "\t" + "\t" + rental.getDaysRented() + "\t" + thisAmount + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + rental.getMovie().getTitle()+ "\t" + "\t" + rental.getDaysRented() + "\t" + rental.amountFor() + "\n";
+            totalAmount += rental.amountFor();
         }
         //add footer lines
         result += "Amount owed is " + totalAmount + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points";
         return result;
     }
+    
+	private int calculateFrequentRenterPoints(int frequentRenterPoints, Rental rental) {
+		frequentRenterPoints ++;
+		if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) && rental.getDaysRented() > 1) 
+		    frequentRenterPoints ++;
+		return frequentRenterPoints;
+	}
 
 }
     
