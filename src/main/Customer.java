@@ -1,7 +1,6 @@
 package main;
 
 
-import java.lang.*;
 import java.util.*;
 
 public class Customer {
